@@ -16,6 +16,8 @@ export const sendReminders = serve(async(context)=>{
 
     // Import dayjs
     // setup qstash
+
+    console.log("here 1")
     const renewalDate = dayjs(subscription.renewalDate);
 
     if(renewalDate.isBefore(dayjs())){
@@ -25,13 +27,18 @@ export const sendReminders = serve(async(context)=>{
 
     for (const daysBefore of REMINDERS){
         const reminderDate = renewalDate.subtract(daysBefore,'day');
+        console.log("here 2")
 
         if(reminderDate.isAfter(dayjs())){
             await sleepUntilReminder(context,`Reminder ${daysBefore} days before`, reminderDate)
+            console.log("here 3")
+
         }
 
         if(dayjs().isSame(reminderDate,'day')){
             await triggerReminder(context, `${daysBefore} days before reminder`, subscription)
+            console.log("here 4")
+
         }
 
     }

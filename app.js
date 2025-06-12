@@ -8,7 +8,6 @@ import subsriptionRouter from "./routes/subsription.route.js";
 import connectToDatabase from "./database/mongodb.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import cookieParser from "cookie-parser";
-import arcjetMiddleware from "./middlewares/arcjet.middleware.js";
 import workflowRouter from "./routes/workflow.route.js";
 
 const app = express();
